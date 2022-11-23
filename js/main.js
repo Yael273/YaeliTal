@@ -2,9 +2,9 @@
 const FLAG = '🚩'
 const EMPTY = ''
 const MINE = '💣'
-const ONE = 1
-const TWO = 2
-const THREE = 3
+// const ONE = 1
+// const TWO = 2
+// const THREE = 3
 
 
 var gBoard
@@ -71,7 +71,7 @@ function renderBoard(board) {
             else if (currCell.isShown) cellClass += ' show'
             else if (currCell.isMarked) cellClass += ' mark'
 
-            strHTML += `\t<td class="cell ${cellClass}" onclick="cellClicked(this, ${i}, ${j})" >\n`
+            strHTML += `\t<td class="cell ${cellClass}" onmousedown="cellClicked(this, ${i}, ${j})" >\n`
 
             strHTML += '\t</td>\n'
         }
@@ -108,7 +108,7 @@ function getClassName(location) {
 function setMinesNegsCount(board) {
     for (var i = 0; i < board.length; i++) {
         for (var j = 0; j < board[0].length; j++) {
-            board[i][j].minesAroundCount = getMinesNegsCount(board, i, j);
+            board[i][j].minesAroundCount = getMinesNegsCount(board, i, j)
         }
     }
 }
@@ -174,8 +174,20 @@ function cellClicked(elCell, i, j) {
 
 }
 
+function checkGameOver() {
+
+}
+
 function gameOver() {
     gGame.isOn = false
     clearInterval(gTimer)
     console.log('Game Over')
+}
+
+function restart(){
+    initGame()
+}
+
+function cellMarked(elCell) {
+
 }
